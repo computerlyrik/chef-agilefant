@@ -49,8 +49,8 @@ application 'jenkins' do
     migration_command 'mvn packge'
     database do
       driver     'org.gjt.mm.mysql.Driver'
-      database   'name'
-      port       5678
+      database   'agilefant'
+#      port       5678
       username   node['agilefant']['mysql_user']
       password   node['agilefant']['mysql_password']
       max_active 1
