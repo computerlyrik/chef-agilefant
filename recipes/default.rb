@@ -17,9 +17,13 @@
 # limitations under the License.
 #
 
-include_recipe "mysql::server"
-include_recipe "database::mysql"
-mysql_connection_info = { :host => "localhost", :username => 'root', :password => node['mysql']['server_root_password'] }
+include_recipe 'mysql::server'
+include_recipe 'database::mysql'
+mysql_connection_info = {
+  host: 'localhost',
+  username: 'root',
+  password: node['mysql']['server_root_password']
+}
 
 node.set_unless['agilefant']['mysql_password'] = secure_password
 
@@ -35,13 +39,11 @@ mysql_database node['agilefant']['mysql_user'] do
   action :create
 end
 
-
 application 'jenkins' do
   path         '/usr/local/jenkins'
   owner        node['tomcat']['user']
   group        node['tomcat']['group']
   repository   'https://github.com/Agilefant/agilefant.git'
-#  revision     '6facd94e958ecf68ffd28be371b5efcb5584c885b5f32a906e477f5f62bdb518-1'
   scm_provider Chef::Provider::Git
   java_webapp do
     migration_command 'mvn packge'
@@ -60,5 +62,3 @@ application 'jenkins' do
 
   tomcat
 end
-
-

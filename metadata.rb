@@ -6,7 +6,7 @@ description      'Installs/Configures agilefant'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.0'
 
-#depens "application"
+depends 'application_java'
 
-depends "java_webapp"
-depends "mysql"
+depends 'mysql'
+depends 'database'
