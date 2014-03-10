@@ -14,3 +14,7 @@ suites:
     run_list:
       - recipe[agilefant::default]
     attributes:
+      mysql:
+        server_debian_password: test
+        server_root_password: test
+        server_repl_password: test
